@@ -4,6 +4,17 @@ A local dashboard for running an AI organization built from the eight open sourc
 
 It shows the team roster, each employee's weekly workload, today's routine timeline, morning briefs, schedules and run logs, and starts any employee's install in Claude with one click.
 
+![Dashboard, light mode](docs/dashboard-light.png)
+
+<details>
+<summary>Dark mode</summary>
+
+![Dashboard, dark mode](docs/dashboard-dark.png)
+
+</details>
+
+Screenshots show the kits' sample data before any employee is hired.
+
 ## Requirements
 
 - macOS (the Hire button opens Terminal)

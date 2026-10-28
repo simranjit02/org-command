@@ -686,17 +686,35 @@
       [hidden] {
         display: none !important;
       }
+      .i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -3px; }
+      .nav button, .cta { display: inline-flex; align-items: center; gap: 8px; }
+      .round .i { width: 18px; height: 18px; }
+      .kpi .arrow .i { width: 13px; height: 13px; }
     </style>
   </head>
   <body>
+    <!-- Icon sprite, Lucide-style strokes (ISC) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+      <symbol id="i-user-plus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10.01-3-3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    </svg>
     <div class="app">
       <div class="top">
         <div class="logo"><i></i>AgentOps</div>
         <nav class="nav" id="nav" aria-label="Views">
-          <button data-v="dashboard" aria-current="page">▦ Dashboard</button>
-          <button data-v="team">👥 Team</button>
-          <button data-v="schedule">🗓 Schedule</button>
-          <button data-v="runs">📄 Run log</button>
+          <button data-v="dashboard" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Dashboard</button>
+          <button data-v="team"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Team</button>
+          <button data-v="schedule"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Schedule</button>
+          <button data-v="runs"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Run log</button>
         </nav>
         <div class="tools">
           <button
@@ -705,7 +723,7 @@
             title="Light mode"
             aria-label="Light mode"
           >
-            ☀
+            <svg class="i" aria-hidden="true"><use href="#i-sun"/></svg>
           </button>
           <button
             class="round"
@@ -713,7 +731,7 @@
             title="Dark mode"
             aria-label="Dark mode"
           >
-            ☾
+            <svg class="i" aria-hidden="true"><use href="#i-moon"/></svg>
           </button>
           <span class="me" title="You">ME</span>
         </div>
@@ -721,13 +739,13 @@
 
       <div class="welcome">
         <div>
-          <h1>👋 Welcome back</h1>
+          <h1>Welcome back</h1>
           <p>
             Overview of your AI organization: who is on the team, what runs
             today, and how each employee is doing.
           </p>
         </div>
-        <button class="cta" id="hireNext">⤓ Hire next employee</button>
+        <button class="cta" id="hireNext"><svg class="i" aria-hidden="true"><use href="#i-user-plus"/></svg>Hire next employee</button>
       </div>
 
       <section class="kpis" id="kpis"></section>
@@ -877,22 +895,22 @@
         $("kpis").innerHTML = [
           [
             "hot",
-            "👥",
+            "users",
             "AI Employees",
             org.length,
             `${hired} hired · ${org.length - hired} ready`,
           ],
-          ["", "⚙", "Routines", routines, "across all roles"],
+          ["", "sliders", "Routines", routines, "across all roles"],
           [
             "",
-            "⏱",
+            "clock",
             "Running Today",
             todayCount,
             new Date().toLocaleDateString(undefined, { weekday: "long" }),
           ],
           [
             "",
-            "✓",
+            "check",
             "Run Success",
             okRate,
             runs.length ? `${runs.length} live runs` : "no live runs yet",
@@ -905,7 +923,7 @@
               t,
               v,
               s,
-            ]) => `<div class="card kpi ${c}"><div class="t"><span class="ic">${ic}</span>${t}<span class="arrow">↗</span></div>
+            ]) => `<div class="card kpi ${c}"><div class="t"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-${ic}"/></svg></span>${t}<span class="arrow"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
      <div class="v"><b>${v}</b><small>${s}</small></div></div>`,
           )
           .join("");

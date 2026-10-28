@@ -1,3 +1,25 @@
+# Hired employees: strategy, CRM, briefs and run logs about your business
 /org
+org/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*
+
+# Runtime and tooling
 node_modules/
+*.log
+npm-debug.log*
+.claude/
+.vscode/
+.idea/
+
+# OS
 .DS_Store
+Thumbs.db
